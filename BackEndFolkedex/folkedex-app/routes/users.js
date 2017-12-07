@@ -4,10 +4,19 @@ var db = require('../models');
 var passport = require('../config/ppConfig');
 var jwt = require('jsonwebtoken');
 var jwtCheck = require('express-jwt');
+var Sequelize = require('sequelize');
+
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/', jwtCheck({secret: process.env.SESSION_SECRET }), function(req, res, next) {
+  db.user.findAll({
+    where: {
+      id: { [Sequelize.Op.ne]:req.user.id }
+    }
+  })
+  .then(users =>{
+    res.json({users: users, user: req.user});
+  })
 });
 
  /*POST /users/signup */
@@ -30,8 +39,8 @@ router.post('/signup', function (req, res, next) {
             region: req.body.region,
             score: 0,
             age_group: req.body.age_group,
-            number_friends: req.body.number_friends,
-            number_folks: req.body.number_folks
+            number_friends: 0,
+            number_folks: 0
           })
           .then(createdUser => {
 
@@ -71,8 +80,30 @@ router.post('/signup', function (req, res, next) {
       }
     })
     .catch(err => {
+      console.log(err);
       res.json(err)
     });
+});
+
+
+// GET /user/profile
+router.get('/profile', jwtCheck({secret: process.env.SESSION_SECRET }), function (req, res, next) {
+  db.user.findById(req.user.id)
+  .then(user => {
+    res.json(user);
+  });
+});
+
+
+// PUT /users/profile
+router.put('/profile', jwtCheck({secret: process.env.SESSION_SECRET }), function (req, res, next) {
+  db.user.findById(req.user.id)
+  .then(user => {
+    user.update(req.body)
+      .then(user => {
+        res.json(user);
+      });
+  })
 });
 
 module.exports = router;

@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const session = require('express-session');
 const passport = require('./config/ppConfig');
+const jade = require('jade');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -31,9 +32,16 @@ app.use(function(req, res, next) {
 });
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function (req, res, next) {
+  console.log(process.env.SESSION_SECRET);
+  next();
+})
+
 app.use('/', index);
 app.use('/users', users);
 app.use('/auth', require('./routes/auth'));
+app.use('/friends', require('./routes/friends'));
+app.use('/folks', require('./routes/folks'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

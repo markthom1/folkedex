@@ -1,6 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   var folk = sequelize.define('folk', {
+    age: DataTypes.INTEGER,
     image: DataTypes.STRING,
     story: DataTypes.STRING,
     user_id: DataTypes.INTEGER,
