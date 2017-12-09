@@ -10,6 +10,11 @@ class Home extends Component {
     }
   }
 
+  componentWillMount() {
+    localStorage.removeItem('loginPage')
+  }
+
+
 
   render () {
     return (
