@@ -6,7 +6,7 @@ class Login extends Component {
     super(props)
 
     this.state = {
-      hasState: true
+
     }
   }
 
@@ -25,22 +25,26 @@ class Login extends Component {
       })
     }
 
-    fetch('http://localhost:3000/auth/login', options)
-    .then(response => response.json())
-    .then(responseJson => {
-      if (responseJson.token && responseJson.user) {
-        localStorage.setItem('session',JSON.stringify(responseJson))
-        this.props.isLoaded(false);
-        this.props.isLoggedIn(true);
-      } else {
-        console.log('Error Occured: ',responseJson);
-      }
+    setTimeout(()=> {
+      fetch('http://localhost:3000/auth/login', options)
+      .then(response => response.json())
+      .then(responseJson => {
+        if (responseJson.token && responseJson.user) {
 
-    })
-    .catch(error => {
-      console.log('did not handle biness!');
-      console.log(error);
-    })
+          localStorage.setItem('session',JSON.stringify(responseJson))
+          this.props.isLoaded(false);
+          this.props.isLoggedIn(true);
+        } else {
+          console.log('Error Occured: ',responseJson);
+        }
+
+      })
+      .catch(error => {
+        console.log('did not handle biness!');
+        console.log(error);
+      });
+    }, 1100)
+
 
   }
 
@@ -49,31 +53,34 @@ class Login extends Component {
   }
 
   render () {
-    console.log('mount login');
     return (
-      <div className="align-center">
-        <h1>Login</h1>
-          <form action="" className="loginForm">
-  					<div className="form-group">
-              <label for="email">Email Address</label>
-  						<input type="email"
-              id="email"
-              className="form-control"
-              placeholder="email"
-              ref="email"/>
-            </div>
-            <div className="form-group">
-              <label for="paw">Password</label>
-  						<input type="password"
-              id="paw"
-              className="form-control"
-              placeholder="Password"
-              ref="paw"/>
-            </div>
-            <div className="form-group">
-  						<input onClick={(e)=> {this.handleLogin(e)}} type="submit" id="submit" className="form-control" value="Submit"/>
-  					</div>
-  				</form>
+      <div className="container login">
+        <div className="shade-div"> <div className="middle">
+          <div className="align-center">
+            <h2>LOGIN</h2>
+              <form action="" className="loginForm">
+                <div className="form-group">
+                  <label for="email"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></label>
+                  <input type="email"
+                  id="email"
+                  className="form-control"
+                  placeholder="Email"
+                  ref="email"/>
+                </div>
+                <div className="form-group">
+                  <label for="paw"><i class="fa fa-lock fa-2x" aria-hidden="true"></i></label>
+                  <input type="password"
+                  id="paw"
+                  className="form-control"
+                  placeholder="Password"
+                  ref="paw"/>
+                </div>
+                <div className="form-group">
+                  <input onClick={(e)=> {this.handleLogin(e)}} type="submit" id="submit" className="form-control" value="Submit"/>
+                </div>
+              </form>
+          </div>
+        </div> </div>
       </div>
     )
   }

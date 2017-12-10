@@ -1,22 +1,99 @@
+.container.login {
+  background: url('../images/green_jungle_tablet.jpg');
+  width: 100%;
+  padding: 0;
+  max-width: 100%;
+  height: 100vh;
+  background-size: cover;
+}
+
+.shade-div {
+  display: table;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.middle {
+  display: table-cell;
+  vertical-align: middle;
+}
+
 .align-center {
   margin: 0 auto;
+  max-width: 30rem;
   width: 30%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  border: 2px solid rgb(184,197,140);
 }
 
-.input-group {
+
+
+.form-group {
+  padding: 0.5em 0;
   display: flex;
-  flex-direction: column;
 }
 
+.fa {
+  color: white;
+  size: 2em;
+  padding: 0.2rem 0.8rem 0 0;
+}
+
+.fa-envelope {
+  padding-top: 0.7rem;
+}
 
 .caption{margin-bottom:50px;}
-.loginForm input[type=text], .loginForm input[type=password]{
+.loginForm input[type=email], .loginForm input[type=password]{
 	margin-bottom:10px;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+
 }
 .loginForm input[type=submit]{
-	background:#fb044a;
+ /* old 	background:color: #fb044a;*/
 	color:#fff;
 	font-weight:700;
+  padding: 1em 0;
+  width: 50%;
+  margin: 0 auto;
+  border:1px solid #78823d;
+  background-color: #9BA84F; background-image: -webkit-gradient(linear, left top, left bottom, from(#9BA84F), to(#848F43));
+  background-image: -webkit-linear-gradient(top, #9BA84F, #848F43);
+  background-image: -moz-linear-gradient(top, #9BA84F, #848F43);
+  background-image: -ms-linear-gradient(top, #9BA84F, #848F43);
+  background-image: -o-linear-gradient(top, #9BA84F, #848F43);
+  background-image: linear-gradient(to bottom, #9BA84F, #848F43);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#9BA84F, endColorstr=#848F43);
+
+}
+
+.loginForm input[type=submit]:hover {
+  border:1px solid #5b632e;
+  background-color: #7b853f; background-image: -webkit-gradient(linear, left top, left bottom, from(#7b853f), to(#646c33));
+  background-image: -webkit-linear-gradient(top, #7b853f, #646c33);
+  background-image: -moz-linear-gradient(top, #7b853f, #646c33);
+  background-image: -ms-linear-gradient(top, #7b853f, #646c33);
+  background-image: -o-linear-gradient(top, #7b853f, #646c33);
+  background-image: linear-gradient(to bottom, #7b853f, #646c33);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#7b853f, endColorstr=#646c33);
+
+}
+
+h2 {
+  text-align: center;
+  margin: 0;
+  padding: 0.5em 0;
+  background-color: rgb(184,197,140);
+  color: rgb(240, 240, 240);;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border-radius: 10px 10px 0 0;
+}
+
+.loginForm {
+  padding: 2em 2rem 2rem 2rem;
 }
 
 
@@ -36,3 +113,37 @@
 	line-height: 21px;
 	padding-left: 22px;
 }
+
+/*
+colors
+
+#edeae6
+#ffe
+linen
+hsl(34,16,91)
+rgb(237,234,230)
+
+#848f43
+#894
+olivedrab
+hsl(68,36,41)
+rgb(132,143,67)
+
+#b8c58c
+#cc9
+tan
+hsl(73,32,66)
+rgb(184,197,140)
+
+#3f3335#433darkslategrayhsl(350,10,22)rgb(63,51,53)
+
+#916d62#976grayhsl(14,19,47)rgb(145,109,98)
+
+
+#d29647#d94peruhsl(34,60,55)rgb(210,150,71)
+
+#e8e5af#febpalegoldenrodhsl(56,55,79)rgb(232,229,175)
+
+#84481f#852saddlebrownhsl(24,61,31)rgb(132,72,31)
+
+*/

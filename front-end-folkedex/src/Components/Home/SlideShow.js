@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import './Home.css';
-import Feed from './Feed';
-import SlideShow from './SlideShow';
+import './SlideShow.css';
 
-class Home extends Component {
+class SlideShow extends Component {
   constructor(props) {
     super(props)
 
@@ -13,7 +11,7 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    localStorage.removeItem('loginPage')
+
   }
 
 
@@ -21,11 +19,10 @@ class Home extends Component {
   render () {
     return (
       <div>
-        <SlideShow />
-        <Feed />
+        <p>Slides here</p>
       </div>
     )
   }
 }
 
-export default Home;
+export default SlideShow;

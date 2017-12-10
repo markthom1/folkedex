@@ -4,6 +4,7 @@ import {
   Route,
   Redirect
 } from 'react-router-dom';
+import './App.css';
 
 import Login from './Components/Login';
 import Nav from './Components/Nav';
@@ -40,23 +41,24 @@ class App extends Component {
 
   render() {
 
-    console.log('mount app');
+    let navBar = <Nav isLoggedIn={this.toggleUserLoggedIn}/>
+
     let loginRedirect = (component) => {
       if (!this.state.userLoggedIn) {
         localStorage.removeItem('loginPage')
-        console.log('here2');
-        return (
-          <div>
-            {(localStorage.getItem('loginPage'))? "":<Nav />}
-            {component}
-          </div>
-        )
+        return <Redirect to="/"/>
       } else {
         localStorage.removeItem('loginPage')
         return (
-          <div>
-            {(localStorage.getItem('loginPage'))? "":<Nav />}
-            {component}
+          <div className="row">
+            <div className="col-2">
+              {(localStorage.getItem('loginPage'))? "":<Nav isLoggedIn={this.toggleUserLoggedIn}/>}
+            </div>
+            <div className="col-10">
+              <div className="row">
+              {component}
+              </div>
+            </div>
           </div>
         )
       }
@@ -66,14 +68,12 @@ class App extends Component {
       <div className="App">
       <Router>
         <div>
-        //How do I know what where the app is going to before this loads!!!
 
           <Route exact path="/" render={(props) => {
                 if (this.state.userLoggedIn) {
                   localStorage.removeItem('loginPage')
                   return <Redirect to="/home"/>
                 } else {
-                  console.log('here');
                   localStorage.setItem('loginPage', true)
                   return (
                     <div>
@@ -90,11 +90,21 @@ class App extends Component {
                 return loginRedirect(<Home />)
               }
             }/>
-          <Route path="/profile" component={ Profile } />
-          <Route path="/rank" component={ Rank } />
-          <Route path="/play" component={ Play } />
+          <Route path="/profile" render={(props) => {
+                return loginRedirect(<Profile />)
+              }
+            } />
+          <Route path="/rank" render={(props) => {
+                return loginRedirect(<Rank />)
+              }
+            } />
+          <Route path="/play" render={(props) => {
+                return loginRedirect(<Play />)
+              }
+            } />
         </div>
       </Router>
+
       </div>
     );
   }
