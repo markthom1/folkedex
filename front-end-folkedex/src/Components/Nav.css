@@ -1,5 +1,5 @@
-nav {
-  height: 100vh
+.navBar {
+  height: 100vh;
 }
 
 ul {
@@ -14,7 +14,7 @@ ul {
   border-top-color: #78823d;
 }
 
-nav li {
+.navBar li {
   list-style: none;
   padding: 1.3em 0.8em;
   text-align: left;
@@ -22,7 +22,7 @@ nav li {
   font-weight: 500;
 }
 
-nav li:hover {
+.navBar li:hover {
 
   background-color: #7b853f; background-image: -webkit-gradient(linear, left top, left bottom, from(#7b853f), to(#646c33));
   background-image: -webkit-linear-gradient(top, #7b853f, #646c33);
@@ -33,17 +33,22 @@ nav li:hover {
 
 }
 
-nav a {
+.navBar a {
   font-weight: 100;
   color: white;
 }
 
-nav a:hover {
+.navBar a:hover {
   color: white;
   text-decoration: none;
 }
 
-nav a.active li {
-  background: #916d62;
+.navBar a.active li {
+  background: rgb(63,51,53);
   border-bottom: none;
+  color: #7dcf3d;
+}
+
+.navBar a.active .fa {
+  color: #7dcf3d;
 }

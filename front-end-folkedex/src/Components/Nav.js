@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './Nav.css';
 
@@ -29,14 +29,14 @@ export default props => {
   }
 
   return (
-    <nav>
+    <nav className="navBar">
       <ul>
-        <NavLink exact to="/home"><li><i class="fa fa-home fa-lg" aria-hidden="true"></i> Home</li></NavLink>
-        <NavLink to="/profile"><li><i class="fa fa-user-circle-o fa-lg" aria-hidden="true"></i> Profile</li></NavLink>
-        <NavLink to="/rank"><li><i class="fa fa-trophy fa-lg" aria-hidden="true"></i> Rankings</li></NavLink>
-        <NavLink to="/play"><li><i class="fa fa-gamepad fa-lg" aria-hidden="true"></i> Play</li></NavLink>
+        <NavLink exact to="/home"><li><i className="fa fa-home fa-lg" aria-hidden="true"></i> Home</li></NavLink>
+        <NavLink to="/profile"><li><i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i> Profile</li></NavLink>
+        <NavLink to="/rank"><li><i className="fa fa-trophy fa-lg" aria-hidden="true"></i> Rankings</li></NavLink>
+        <NavLink to="/play"><li><i className="fa fa-gamepad fa-lg" aria-hidden="true"></i> Play</li></NavLink>
         <NavLink onClick={(e)=>handleLogout(e)}
-        to="#"><li><i class="fa fa-sign-out fa-lg" aria-hidden="true"></i>Logout</li></NavLink>
+        to="#"><li><i className="fa fa-sign-out fa-lg" aria-hidden="true"></i>Logout</li></NavLink>
       </ul>
     </nav>
   )

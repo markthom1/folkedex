@@ -1,0 +1,23 @@
+
+.rank-table {
+  padding: 3em 0;
+}
+
+.rankNav ul {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  border: none;
+}
+
+.rankNav li {
+  padding: 0.5em 2em;
+}
+
+.select-friends {
+  background: black;
+}
+
+.rankNav {;
+  border-bottom: 4px solid black;
+}

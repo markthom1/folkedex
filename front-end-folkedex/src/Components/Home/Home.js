@@ -20,9 +20,13 @@ class Home extends Component {
 
   render () {
     return (
-      <div>
-        <SlideShow />
-        <Feed />
+      <div className="container">
+        <div className="slides">
+          <SlideShow />
+        </div>
+        <div className="feed">
+          <Feed />
+        </div>
       </div>
     )
   }

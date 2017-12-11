@@ -57,10 +57,10 @@ class Login extends Component {
       <div className="container login">
         <div className="shade-div"> <div className="middle">
           <div className="align-center">
-            <h2>LOGIN</h2>
+            <h2><i className="fa fa-sign-in" aria-hidden="true"> Login</i></h2>
               <form action="" className="loginForm">
                 <div className="form-group">
-                  <label for="email"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i></label>
+                  <label for="email"><i className="fa fa-envelope fa-lg" aria-hidden="true"></i></label>
                   <input type="email"
                   id="email"
                   className="form-control"
@@ -68,7 +68,7 @@ class Login extends Component {
                   ref="email"/>
                 </div>
                 <div className="form-group">
-                  <label for="paw"><i class="fa fa-lock fa-2x" aria-hidden="true"></i></label>
+                  <label for="paw"><i className="fa fa-lock fa-2x" aria-hidden="true"></i></label>
                   <input type="password"
                   id="paw"
                   className="form-control"

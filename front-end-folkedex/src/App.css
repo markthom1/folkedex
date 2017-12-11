@@ -1,6 +1,6 @@
 .col-2 {
   height: 100%;
-  background: rgb(63,51,53);
+  background: #5f4549; /*rgb(63,51,53);*/
   padding-right: 0;
 }
 
@@ -12,5 +12,14 @@
 
 .col-10 {
   min-height: 100%;
-  /*max-width: 82.15%;*/
+  max-width: 82.15%;
+}
+
+.container {
+  padding-right: 0;
+  padding-left: 0;
+  height: 100%;
+  width: 80%;
+  box-sizing: border-box;
+  border-radius: 10px;
 }

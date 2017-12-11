@@ -1,0 +1,19 @@
+.feed {
+  padding-top: 2em;
+  min-height: 50%;
+}
+
+.slides {
+  /*margin-top: 3em;*/
+  height: 45%;
+}
+
+.card {
+  box-shadow: 0 0 0 0 rgba(0,0,0,0.3);
+  border-radius: 3px;;
+  box-sizing: border-box;
+  border: none;
+  height: 100%;
+  width: 100%;
+  border: none;
+}

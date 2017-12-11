@@ -1,0 +1,28 @@
+.home-title {
+  height: 10%;
+  margin: 0;
+  padding: 0.1em 0.2em;
+  background-color: rgb(184,197,140);
+  color: rgb(255, 255, 255);
+}
+
+.carousel-item {
+  display: flex;
+  margin: 0 auto;
+  width: 550px;
+}
+
+.carousel-item img {
+  width: 100%;
+}
+
+ .folk-story {
+   position: absolute;
+   left: 0;
+   bottom: 0;
+   color: white;
+   background: linear-gradient(to bottom, transparent 0%, black 98%);
+   display: inline-block;
+   width: 100%;
+   padding: 0 1.2em;
+ }

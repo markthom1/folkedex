@@ -52,12 +52,10 @@ class App extends Component {
         return (
           <div className="row">
             <div className="col-2">
-              {(localStorage.getItem('loginPage'))? "":<Nav isLoggedIn={this.toggleUserLoggedIn}/>}
+              {(localStorage.getItem('loginPage'))? "":navBar}
             </div>
             <div className="col-10">
-              <div className="row">
               {component}
-              </div>
             </div>
           </div>
         )
@@ -77,7 +75,7 @@ class App extends Component {
                   localStorage.setItem('loginPage', true)
                   return (
                     <div>
-                      {(localStorage.getItem('loginPage'))? "":<Nav />}
+                      {(localStorage.getItem('loginPage'))? "":navBar}
                        <Login {...props} isLoaded={this.toggleOnLogin}
                       isLoggedIn={this.toggleUserLoggedIn}/>
                     </div>

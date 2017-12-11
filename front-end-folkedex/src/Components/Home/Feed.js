@@ -18,8 +18,9 @@ class Feed extends Component {
 
   render () {
     return (
-      <div>
-        <p>feed</p>
+      <div className="card">
+        <h5 className="home-title">The Feed</h5>
+        <p>Coming soon ...</p>
       </div>
     )
   }
