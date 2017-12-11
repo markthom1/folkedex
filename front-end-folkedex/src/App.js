@@ -20,7 +20,7 @@ class App extends Component {
 
     this.state = {
       onLoginPage: localStorage.getItem('loginPage'),
-      userLoggedIn: localStorage.getItem('session')
+      userLoggedIn: JSON.parse(localStorage.getItem('session'))
     }
 
     this.toggleOnLogin = this.toggleOnLogin.bind(this)
@@ -89,7 +89,8 @@ class App extends Component {
               }
             }/>
           <Route path="/profile" render={(props) => {
-                return loginRedirect(<Profile />)
+                return loginRedirect(<Profile
+                  person={this.state.userLoggedIn.user.id}/>)
               }
             } />
           <Route path="/rank" render={(props) => {

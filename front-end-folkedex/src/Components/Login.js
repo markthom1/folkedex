@@ -57,7 +57,7 @@ class Login extends Component {
       <div className="container login">
         <div className="shade-div"> <div className="middle">
           <div className="align-center">
-            <h2><i className="fa fa-sign-in" aria-hidden="true"> Login</i></h2>
+            <h2 className="login-title"><i className="fa fa-sign-in" aria-hidden="true"> Login</i></h2>
               <form action="" className="loginForm">
                 <div className="form-group">
                   <label for="email"><i className="fa fa-envelope fa-lg" aria-hidden="true"></i></label>

@@ -1,12 +1,53 @@
 import React, { Component } from 'react';
 import './Profile.css';
+import ProfPic from './ProfPic';
+import Friend from './Friend';
+import Folk from './Folk';
 
 class Profile extends Component {
   constructor(props) {
     super(props)
 
+    this.user=""
     this.state = {
       hasState: true
+    }
+  }
+
+  componentWillMount() {
+    var user = JSON.parse(localStorage.getItem('session')).user;
+
+    if (this.props.person === user.id) {
+      this.user = user
+    } else {
+      var options = {
+        method: 'GET',
+        headers: {
+         Accept: 'application/json',
+         'Content-Type': 'application/json',
+         "Access-Control-Allow-Origin": "*"
+        },
+        body: JSON.stringify({
+         id: this.person
+        })
+      }
+
+        fetch('http://localhost:3000/users/profile', options)
+        .then(response => response.json())
+        .then(responseJson => {
+          console.log(responseJson);
+          // if (responseJson.id) {
+          //
+          // } else {
+          //   console.log('Error Occured: ',responseJson);
+          // }
+
+        })
+        .catch(error => {
+          console.log('did not handle biness!');
+          console.log(error);
+        });
+
     }
   }
 
@@ -16,10 +57,7 @@ class Profile extends Component {
 
     return (
       <div className="container">
-        <div className="contains-prof-pic">
-          <img src={pic} alt=""/>
-          <p>Your Name</p>
-        </div>
+        <ProfPic />
         <div className="row">
           <div className="col-4">
             <div className="profile-info">
@@ -32,34 +70,16 @@ class Profile extends Component {
               </div>
             </div>
             <div className="friends-container">
-              <h5>Friends</h5>
+              <h4 className="friends-title">Friends</h4>
               <div className="container two-friends">
-                <div className="friend">
-                  <img src={pic} alt=""/>
-                  <p>Friends name</p>
-                </div>
-                <div className="friend">
-                  <img src={pic} alt=""/>
-                  <p>Friends name</p>
-                </div>
-              </div>
-              <div className="container two-friends">
-                <div className="friend">
-                  <img src={pic} alt=""/>
-                  <p>Friends name</p>
-                </div>
-                <div className="friend">
-                  <img src={pic} alt=""/>
-                  <p>Friends name</p>
-                </div>
+                <Friend />
+
               </div>
             </div>
           </div>
           <div className="col-8">
             <div className="show-folks">
-              <div className="folk">
-                <img src={pic} alt=""/>
-              </div>
+              <Folk />
             </div>
           </div>
         </div>
