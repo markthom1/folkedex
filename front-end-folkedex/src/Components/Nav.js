@@ -28,11 +28,13 @@ export default props => {
 
   }
 
+  var userId = JSON.parse(localStorage.getItem('session')).user.id
+
   return (
     <nav className="navBar">
       <ul>
         <NavLink exact to="/home"><li><i className="fa fa-home fa-lg" aria-hidden="true"></i> Home</li></NavLink>
-        <NavLink to="/profile"><li><i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i> Profile</li></NavLink>
+        <NavLink to={`/profile/${userId}`}><li><i className="fa fa-user-circle-o fa-lg" aria-hidden="true"></i> Profile</li></NavLink>
         <NavLink to="/rank"><li><i className="fa fa-trophy fa-lg" aria-hidden="true"></i> Rankings</li></NavLink>
         <NavLink to="/play"><li><i className="fa fa-gamepad fa-lg" aria-hidden="true"></i> Play</li></NavLink>
         <NavLink onClick={(e)=>handleLogout(e)}

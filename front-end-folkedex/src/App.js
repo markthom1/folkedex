@@ -12,6 +12,8 @@ import Home from './Components/Home/Home';
 import Profile from './Components/Profile/Profile';
 import Rank from './Components/Rank/Rank';
 import Play from './Components/Play/Play';
+import Header from './Components/Header';
+import Search from './Components/Search/Search';
 
 
 class App extends Component {
@@ -50,12 +52,17 @@ class App extends Component {
       } else {
         localStorage.removeItem('loginPage')
         return (
-          <div className="row">
-            <div className="col-2">
-              {(localStorage.getItem('loginPage'))? "":navBar}
+          <div>
+            <div className="row">
+              <Header />
             </div>
-            <div className="col-10">
-              {component}
+            <div className="row">
+              <div className="col-2">
+                {(localStorage.getItem('loginPage'))? "":navBar}
+              </div>
+              <div className="col-10">
+                {component}
+              </div>
             </div>
           </div>
         )
@@ -88,9 +95,8 @@ class App extends Component {
                 return loginRedirect(<Home />)
               }
             }/>
-          <Route path="/profile" render={(props) => {
-                return loginRedirect(<Profile
-                  person={this.state.userLoggedIn.user.id}/>)
+          <Route path="/profile/:id" render={(props, id) => {
+                return loginRedirect(<Profile/>)
               }
             } />
           <Route path="/rank" render={(props) => {
@@ -101,6 +107,10 @@ class App extends Component {
                 return loginRedirect(<Play />)
               }
             } />
+          <Route path="/search" render={(props) => {
+                return loginRedirect(<Search />)
+              }
+            }/>
         </div>
       </Router>
 
