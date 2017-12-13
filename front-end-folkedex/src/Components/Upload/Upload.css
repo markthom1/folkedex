@@ -1,0 +1,17 @@
+.upload-title {
+  color: white;
+}
+
+.container.upload {
+  color: white;
+}
+
+.upload-form input {
+  width: 60%;
+  padding: 0.3em 1em;
+}
+
+.photo {
+  margin-top: 2em;
+  width: 300px;
+}

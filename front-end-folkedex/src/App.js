@@ -15,6 +15,7 @@ import Play from './Components/Play/Play';
 import Header from './Components/Header';
 import Search from './Components/Search/Search';
 import Footer from './Components/Footer';
+import Upload from './Components/Upload/Upload';
 
 
 class App extends Component {
@@ -126,6 +127,7 @@ class App extends Component {
             <Route path="/rank" component={Rank}/>
             <Route path="/play" component={Play}/>
             <Route path="/search" component={Search}/>
+            <Route path="/upload" component={Upload}/>
           </div>
         </div>
 
