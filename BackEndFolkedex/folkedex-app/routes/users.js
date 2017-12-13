@@ -9,13 +9,65 @@ var Sequelize = require('sequelize');
 
 /* GET users listing. */
 router.get('/', jwtCheck({secret: process.env.SESSION_SECRET }), function(req, res, next) {
+  var holdUsers, holdFriends, holdOutgoing;
+  var queryParams = {id: { [Sequelize.Op.ne]:req.user.id }};
+  console.log(req.query);
+
   db.user.findAll({
-    where: {
-      id: { [Sequelize.Op.ne]:req.user.id }
-    }
+    where: queryParams
   })
   .then(users =>{
-    res.json({users: users, user: req.user});
+    holdUsers = users
+    db.friend.findAll({
+      where: {user_id: req.user.id}
+    })
+    .then(relations => {
+      holdFriends = relations
+      db.friend_request.findAll({
+        where: {user_id: req.user.id}
+      })
+      .then(outgoing => {
+        holdOutgoing = outgoing
+        db.friend_request.findAll({
+          where: {requestee_id: req.user.id}
+        })
+        .then(incoming => {
+          var finalArray = []
+          holdUsers.forEach((heldUser, index) => {
+            finalArray.push({
+              user: heldUser,
+              isFriend: false,
+              friendRequested: false,
+              incomingReq: false
+            })
+          holdFriends.forEach(relation => {
+           var friendId = relation.friend_id
+           if (friendId === heldUser.id ) {
+             finalArray[index].isFriend = true;
+            }
+          });
+
+          holdOutgoing.forEach(outgoingReq => {
+            var requesteeId = outgoingReq.requestee_id
+            if (requesteeId === heldUser.id ) {
+              finalArray[index].friendRequested = true;
+             }
+           });
+
+           incoming.forEach(incomingReq => {
+             var requesterId = incomingReq.user_id
+             if (requesterId === heldUser.id ) {
+               finalArray[index].incomingReq = true;
+              }
+            });
+          })
+          res.json({users: finalArray})
+        });
+      });
+    });
+  })
+  .catch(error => {
+    console.log(error);
   })
 });
 
@@ -38,6 +90,7 @@ router.post('/signup', function (req, res, next) {
             last_name: req.body.last_name,
             region: req.body.region,
             score: 0,
+            image: `https://api.adorable.io/avatars/${Math.floor(Math.random()*9999)}/`,
             age_group: req.body.age_group,
             number_friends: 0,
             number_folks: 0
@@ -52,6 +105,7 @@ router.post('/signup', function (req, res, next) {
               score: createdUser.score,
               age_group: createdUser.age_group,
               region: createdUser.region,
+              image: createdUser.image,
               custom: 'User logged in.'
             };
             const options = {
@@ -86,9 +140,9 @@ router.post('/signup', function (req, res, next) {
 });
 
 
-// GET /user/profile
-router.get('/profile', jwtCheck({secret: process.env.SESSION_SECRET }), function (req, res, next) {
-  db.user.findById(req.user.id)
+// GET /users/profile
+router.get('/profile/:id', function (req, res, next) {
+  db.user.findById(req.params.id)
   .then(user => {
     res.json(user);
   });
@@ -96,14 +150,25 @@ router.get('/profile', jwtCheck({secret: process.env.SESSION_SECRET }), function
 
 
 // PUT /users/profile
-router.put('/profile', jwtCheck({secret: process.env.SESSION_SECRET }), function (req, res, next) {
-  db.user.findById(req.user.id)
+router.put('/profile/:id', jwtCheck({secret: process.env.SESSION_SECRET }), function (req, res, next) {
+  db.user.findById(req.params.id)
   .then(user => {
     user.update(req.body)
       .then(user => {
         res.json(user);
       });
   })
+});
+
+// delete /users/profile
+router.delete('/profile/:id', function (req, res, next) {
+  db.user.findById(req.params.id)
+  .then(user => {
+    user.destroy()
+    .then(() => {
+      res.json({processStatus: 'done'});
+    });
+  });
 });
 
 module.exports = router;

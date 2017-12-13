@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     score: DataTypes.INTEGER,
     age_group: DataTypes.STRING,
     number_friends: DataTypes.INTEGER,
-    number_folks: DataTypes.INTEGER
+    number_folks: DataTypes.INTEGER,
+    image: DataTypes.STRING
   }, {
     classMethods: {
       associate: function(models) {

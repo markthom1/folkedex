@@ -9,7 +9,7 @@ router.post('/login', function(req, res, next) {
   passport.authenticate('local', function(err, user, info) {
     if (err) { return next(err) }
     if (!user) {
-      return res.json(401, { error: 'Invalid email and/or password' });
+      return res.status(401).json({ error: 'Invalid email and/or password' });
     }
 
     //user has authenticated correctly thus we create a JWT token
@@ -22,6 +22,7 @@ router.post('/login', function(req, res, next) {
           score: details.score,
           age_group: details.age_group,
           region: details.region,
+          image: details.image,
           custom: 'User logged in.'
         };
         const options = { expiresIn: '2d' };

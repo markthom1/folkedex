@@ -30,6 +30,14 @@ app.use(function(req, res, next) {
   res.locals.currentUser = req.user;
   next();
 });
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "*");
+  res.header("Access-Control-Allow-Methods", 'POST, GET, OPTIONS, PUT, DELETE');
+
+  next();
+});
+
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {

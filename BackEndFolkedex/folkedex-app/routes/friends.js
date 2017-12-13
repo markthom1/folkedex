@@ -6,6 +6,22 @@ var jwt = require('jsonwebtoken');
 var jwtCheck = require('express-jwt');
 var Sequelize = require('sequelize');
 
+
+/* GET list of friends*/
+router.get('/', jwtCheck({secret: process.env.SESSION_SECRET }), function(req, res, next) {
+  db.friend.findAll({
+    where: {
+      user_id: req.user.id
+    },
+    include: [{
+      model: db.user
+    }]
+  })
+  .then((users) =>{
+    res.json(users);
+  })
+});
+
 /* GET to see friend request*/
 router.get('/requests', jwtCheck({secret: process.env.SESSION_SECRET }), function(req, res, next) {
   db.friend_request.findAll({
@@ -17,13 +33,13 @@ router.get('/requests', jwtCheck({secret: process.env.SESSION_SECRET }), functio
     }]
   })
   .then((users) =>{
-    res.json({ users: users, id: req.user.id});
+    res.json(users);
   });
 });
 
 
 /* POST to accept friend request*/
-router.post('/requests', jwtCheck({secret: process.env.SESSION_SECRET }), function(req, res, next) {
+router.post('/accept', jwtCheck({secret: process.env.SESSION_SECRET }), function(req, res, next) {
   db.friend_request.findAll({
     where: {
       user_id: req.body.requester_id,
@@ -46,7 +62,7 @@ router.post('/requests', jwtCheck({secret: process.env.SESSION_SECRET }), functi
         .then(() => {
           db.user.findById(req.body.requester_id)
           .then(addedUser => {
-            res.json({addedUser: addedUser, user: req.user})
+            res.json(addedUser)
           })
         });
       });
@@ -67,25 +83,10 @@ router.post('/add', jwtCheck({secret: process.env.SESSION_SECRET }), function(re
   .then(() =>{
     db.user.findById(req.body.requestee_id)
     .then(requestedUser => {
-      res.json({requestedUser: requestedUser, user: req.user})
+      res.json(requestedUser)
     });
   });
 });
 
-
-/* GET list of friends*/
-router.get('/', jwtCheck({secret: process.env.SESSION_SECRET }), function(req, res, next) {
-  db.relationship.findAll({
-    where: {
-      user_id: req.user.id
-    },
-    include: [{
-      model: db.user
-    }]
-  })
-  .then((users) =>{
-    res.json({ users: users, user: req.user});
-  });
-});
 
 module.exports = router;

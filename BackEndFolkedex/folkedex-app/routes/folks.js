@@ -17,8 +17,18 @@ router.get('/', jwtCheck({secret: process.env.SESSION_SECRET }),
   })
   .then(folks => {
     res.json(folks)
+  });
+});
+
+router.get('/slides', jwtCheck({secret: process.env.SESSION_SECRET }),
+(req, res, next) => {
+  db.folk.findAll({
+    limit: 8
   })
-})
+  .then(folks => {
+    res.json(folks)
+  });
+});
 
 // add folk
 router.post('/add', jwtCheck({secret: process.env.SESSION_SECRET }),
@@ -71,7 +81,7 @@ router.delete('/delete', jwtCheck({secret: process.env.SESSION_SECRET }),
   });
 });
 
-router.get('/check', (req, res, next) => {
+router.post('/check', (req, res, next) => {
   var url = 'https://westcentralus.api.cognitive.microsoft.com/vision/v1.0/analyze?'
   var options = {
     method: 'POST',
@@ -80,12 +90,23 @@ router.get('/check', (req, res, next) => {
       "Content-Type": "application/json",
       "Ocp-Apim-Subscription-Key": process.env.API_KEY,
     },
-    body: '{"url": "http://static5.businessinsider.com/image/4f75cdb869bedd2a53000046/the-infamous-alabama-face-guy-wants-to-be-president-of-the-university-of-alabama-now.jpg"}'
+    body: '{"url": "' +req.body.imageUrl+ '"}'
   }
 
   rp(options)
   .then(response => {
-    res.json(JSON.parse(response))
+
+    var resNew = JSON.parse(response)
+    console.log();
+    db.folk.create({
+      age: resNew.faces[0].age,
+      image: req.body.imageUrl,
+      story: req.body.imageUrl,
+      user_id: req.user.id
+    })
+    .then(folk => {
+      res.json(folk)
+    })
   })
 
 })
