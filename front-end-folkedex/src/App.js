@@ -53,64 +53,64 @@ class App extends Component {
         localStorage.removeItem('loginPage')
         return (
           <div>
-            <div className="row">
-              <Header />
-            </div>
-            <div className="row">
-              <div className="col-2">
-                {(localStorage.getItem('loginPage'))? "":navBar}
-              </div>
-              <div className="col-10">
-                {component}
-              </div>
-            </div>
+
           </div>
         )
       }
     }
 
+
+
     return (
       <div className="App">
       <Router>
         <div>
-
-          <Route exact path="/" render={(props) => {
-                if (this.state.userLoggedIn) {
-                  localStorage.removeItem('loginPage')
-                  return <Redirect to="/home"/>
-                } else {
-                  localStorage.setItem('loginPage', true)
-                  return (
-                    <div>
-                      {(localStorage.getItem('loginPage'))? "":navBar}
-                       <Login {...props} isLoaded={this.toggleOnLogin}
+          {(!this.state.userLoggedIn)?
+            <Route path="/" render={(props) => {
+                  return (<Login {...props} isLoaded={this.toggleOnLogin}
                       isLoggedIn={this.toggleUserLoggedIn}/>
-                    </div>
                   )
                 }
               }
-            }
-          />
-          <Route path="/home" render={(props) => {
-                return loginRedirect(<Home />)
+            />
+
+          :
+          <div>
+          <div className="row">
+            <Header />
+          </div>
+          <div className="row">
+            <div className="col-2">
+              {(localStorage.getItem('loginPage'))? "":navBar}
+            </div>
+            <div className="col-10 main">
+            <Route exact path="/" render={(props) => {
+                  if (this.state.userLoggedIn) {
+                    localStorage.removeItem('loginPage')
+                    return <Redirect to="/home"/>
+                  } else {
+                    localStorage.setItem('loginPage', true)
+                    return (
+                      <div>
+
+                         <Login {...props} isLoaded={this.toggleOnLogin}
+                        isLoggedIn={this.toggleUserLoggedIn}/>
+                      </div>
+                    )
+                  }
+                }
               }
-            }/>
-          <Route path="/profile/:id" render={(props, id) => {
-                return loginRedirect(<Profile/>)
-              }
-            } />
-          <Route path="/rank" render={(props) => {
-                return loginRedirect(<Rank />)
-              }
-            } />
-          <Route path="/play" render={(props) => {
-                return loginRedirect(<Play />)
-              }
-            } />
-          <Route path="/search" render={(props) => {
-                return loginRedirect(<Search />)
-              }
-            }/>
+            />
+            <Route path="/home" component={Home}/>
+            <Route exact path="/profile/:id" component={Profile}/>
+            <Route path="/rank" component={Rank}/>
+            <Route path="/play" component={Play}/>
+            <Route path="/search" component={Search}/>
+          </div>
+        </div>
+        </div>
+      }
+
         </div>
       </Router>
 

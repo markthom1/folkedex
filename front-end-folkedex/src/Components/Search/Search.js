@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Search.css';
 import Result from './Result';
+import search from './searchTerm';
 
 class Search extends Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class Search extends Component {
   }
 
   componentWillMount () {
+    console.log(search.searchTerm);
     var token = JSON.parse(localStorage.getItem('session')).token
     var options = {
       method: 'GET',
@@ -22,7 +24,7 @@ class Search extends Component {
          'Authorization': `Bearer ${token}`
        }
       }
-    fetch('http://localhost:3000/users/', options)
+    fetch('http://localhost:3000/users/?search=fred+bob+jack', options)
     .then(response => response.json())
     .then(responseJson => {
       this.setState({
@@ -36,10 +38,11 @@ class Search extends Component {
 
 
   render () {
-    console.log(this.state.results);
     const allResult = this.state.results.map(result => {
-      return <Result name={`${result.first_name} ${result.last_name}`}
-      region={result.region}/>
+      return <Result key={result.user.id} name={`${result.user.first_name} ${result.user.last_name}`}
+      region={result.user.region} isFriend={result.isFriend}
+      userId={result.user.id} friendRequested={result.friendRequested}
+      incomingReq={result.incomingReq} image={result.user.image}/>
     })
 
 

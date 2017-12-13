@@ -15,6 +15,10 @@
   max-width: 82.15%;
 }
 
+.col-10.main {
+  margin-top: 3em;
+}
+
 .container {
   padding-right: 0;
   padding-left: 0;
