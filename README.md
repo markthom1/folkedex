@@ -1,7 +1,7 @@
 # Folkedex
 Gotta snap 'em all
 
-![](./assets/) 
+![](./assets/Folkedex ERD.jpg) 
 
 ## UserStories
 * **Given I am on any page on web app, when I click on take picture button I am taken to the take picture page.**
