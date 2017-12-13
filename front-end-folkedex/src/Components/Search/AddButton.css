@@ -1,0 +1,19 @@
+.btn.reg:hover {
+  cursor: pointer;
+  background: #61892F;
+}
+
+.btn.reg, .btn.requested {
+  margin-left: 2em;
+  height: 40%;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.5);;
+}
+
+.btn.reg {
+  background: #86C232;
+}
+
+.btn.requested {
+  background-color: none;
+}

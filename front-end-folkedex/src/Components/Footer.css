@@ -1,0 +1,22 @@
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background: #222629;
+  width: 100%;
+  padding: 1.3em;
+  color: #86C232;
+  font-size: 1.2em;
+  margin-top: 3em;
+}
+
+.footer-container .fa {
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  color: #86C232
+}
+
+.footer-container .title {
+  border-right: 1px solid #86C232;
+  padding-right: 0.5em;
+}

@@ -29,6 +29,10 @@ class Result extends Component {
       JSON.stringify({ requester_id: this.props.userId }):
       JSON.stringify({ requestee_id: this.props.userId });
 
+      var setStateObject = (this.state.incomingReq)?
+      {isFriend: true}:
+      {friendRequested: true}
+
       console.log(fetchBody);
       var options = {
         method: 'POST',
@@ -43,9 +47,7 @@ class Result extends Component {
       fetch(fetchUrl, options)
       .then(response => response.json())
       .then(responseJson => {
-        this.setState({
-          friendRequested: true
-        })
+        this.setState(setStateObject)
       })
       .catch(error => {
         console.log('Error!..: ',error);
@@ -67,15 +69,16 @@ class Result extends Component {
 
     return (
       <div className="search-result">
-        <img src={this.props.image} alt=""/>
+        <div><img src={this.props.image} alt=""/></div>
         <div className="result-info">
           <h5>{this.props.name}</h5>
           <h6>Region: {this.props.region}</h6>
-          {(this.state.isFriend)?"":<AddButton userId={this.props.userId}
-          friendRequested={this.state.friendRequested}
-          incomingReq={this.state.incomingReq}
-          addUser={(e) => {this.addUser(e)}}/>}
         </div>
+        {(this.state.isFriend)?"":<div className="hold-btn">
+        <AddButton userId={this.props.userId}
+        friendRequested={this.state.friendRequested}
+        incomingReq={this.state.incomingReq}
+        addUser={(e) => {this.addUser(e)}}/> </div>}
       </div>
     )
   }

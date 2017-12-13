@@ -6,6 +6,7 @@
 .slides {
   /*margin-top: 3em;*/
   height: 45%;
+  background-color: #6B6E70;
 }
 
 .card {
@@ -16,4 +17,9 @@
   height: 100%;
   width: 100%;
   border: none;
+    background-color: #6B6E70;
+}
+
+.feature-heading {
+  color: white;
 }

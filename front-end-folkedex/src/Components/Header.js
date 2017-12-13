@@ -17,13 +17,7 @@ class Header extends Component {
 
   goToSearch(e) {
     e.preventDefault();
-    let promiseHere = new Promise((resolve, reject) => {
-      search.searchTerm = document.getElementById("search-bar").value;
-      resolve('done')
-    })
-
     window.location = 'search';
-    
   }
 
 
@@ -33,16 +27,16 @@ class Header extends Component {
     var usersName = `${session.user.first_name} ${session.user.last_name}`;
 
     return (
-      <div className="header-container">
+      <header className="header-container">
         <NavLink exact to="/home"><h1 className="title-logo">Folkedex</h1></NavLink>
         <div className="header-functions">
-          <form className="search-form" onSubmit={(e)=> this.goToSearch(e)}>
-            <input id="search-bar" type="text" placeholder="Search ..."/>
-          <button className="btn-search" type="submit"><i className="fa fa-search" aria-hidden="true"></i></button>
-          </form>
+          <div className="search-form" onClick={(e)=> this.goToSearch(e)}>
+          <i className="fa fa-search fa-lg" aria-hidden="true"></i>
+          <i className="fa fa-plus-square-o fa-lg" aria-hidden="true"></i>
+          </div>
           <NavLink exact to={`/profile/${session.user.id}`}><h3>Hello, {usersName}</h3></NavLink>
         </div>
-      </div>
+      </header>
     )
   }
 }

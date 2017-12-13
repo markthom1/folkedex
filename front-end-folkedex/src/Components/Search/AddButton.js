@@ -20,7 +20,8 @@ class AddButton extends Component {
     var buttonOptions =(this.props.incomingReq)?"Accept":"Send Request"
 
     return (
-      <div className="btn" onClick={(e)=>{this.props.addUser(e)}}>
+      <div className={(this.props.friendRequested)?"btn requested":"btn reg"}
+        onClick={(e)=>{this.props.addUser(e)}}>
         {(this.props.friendRequested)?"Friend Requested":buttonOptions}
       </div>
     )

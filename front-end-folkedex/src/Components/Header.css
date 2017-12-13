@@ -1,8 +1,17 @@
 .header-container {
   display: flex;
   flex-direction: row;
-  background: #5f4549;
+  background: #222629;
   width: 100%;
+}
+
+.header-container a {
+  color: #86C232
+}
+
+.header-container a:hover {
+  color: #3edb30;
+  text-decoration: none;
 }
 
 .header-functions {
@@ -15,6 +24,7 @@
 .title-logo {
   padding-left: 1em;
   padding-right: 4em;
+  font-family: 'Audiowide', cursive;
 }
 
 .header-functions {
@@ -22,6 +32,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  font-family: 'Cuprum', sans-serif;
 }
 
 .search-form {
@@ -34,6 +45,19 @@
   padding: 0.2em 1em;
   box-shadow: none;
 }
+
+.header-container .fa {
+  padding: 0.4em;
+  background: #86C232;
+  border-radius: 2px;
+  margin: 0 0.7em;
+}
+
+.header-container .fa:hover {
+  cursor: pointer;
+  background: #61892F;
+}
+
 
 .btn-search {
   background: none;

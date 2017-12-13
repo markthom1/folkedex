@@ -21,6 +21,7 @@ class Home extends Component {
   render () {
     return (
       <div className="container">
+        <h1 className="feature-heading">Featured Folk:</h1>
         <div className="slides">
           <SlideShow />
         </div>

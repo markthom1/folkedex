@@ -1,5 +1,19 @@
+/*Fonts
+font-family: 'Kaushan Script', cursive;
+font-family: 'Audiowide', cursive;
+font-family: 'Cuprum', sans-serif;
+*/
+
+.main-title{
+  color: white;
+  font-family: 'Audiowide', cursive;
+  font-size: 4em;
+  text-align: center;
+  border-bottom: 5px solid white
+
+}
+
 .container.login {
-  background: url('../images/green_jungle_tablet.jpg');
   width: 100%;
   padding: 0;
   max-width: 100%;
@@ -12,21 +26,23 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.7);
+  background: none;
 }
 
 .middle {
-  display: table-cell;
+  padding-top: 1em;
   vertical-align: middle;
 }
 
 .align-center {
   margin: 0 auto;
+  margin-top: 10em;
   max-width: 30rem;
   width: 30%;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 15px;
-  border: 2px solid rgb(184,197,140);
+  border: 2px solid #86C232;
+  box-shadow: 0 0 5px 2px #86C232
 }
 
 
@@ -82,15 +98,16 @@
 }
 
 .login-title {
-  text-align: center;
-  margin: 0;
-  padding: 0.5em 0;
-  background-color: rgb(184,197,140);
-  color: rgb(240, 240, 240);;
-  font-weight: 600;
-  letter-spacing: 2px;
-  border-radius: 10px 10px 0 0;
+  padding: 1em 1em;
+  color: white;
+  font-family: 'Cuprum', sans-serif;
+  letter-spacing: 1px;
 }
+
+.login-title h2  {
+    padding-bottom: 0.2em;
+    border-bottom: 1px solid rgba(250, 250, 250,0.5);
+  }
 
 .loginForm {
   padding: 2em 2rem 2rem 2rem;

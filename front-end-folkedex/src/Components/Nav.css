@@ -1,17 +1,12 @@
 .navBar {
-  height: 100vh;
+  height: 100%;
+  border: 2px solid white;
 }
 
 ul {
   margin: 0;
   padding: 1.5em 0 1.5em 0;
   list-style-type: none;
-  border-bottom: 2px;
-  border-bottom-style: solid;
-  border-bottom-color: #78823d;
-  border-top: 2px;
-  border-top-style: solid;
-  border-top-color: #78823d;
 }
 
 .navBar li {
@@ -44,7 +39,7 @@ ul {
 }
 
 .navBar a.active li {
-  background: rgb(63,51,53);
+  background: #343638;
   border-bottom: none;
   color: #7dcf3d;
 }

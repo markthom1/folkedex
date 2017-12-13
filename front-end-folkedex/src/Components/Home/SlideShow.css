@@ -10,7 +10,10 @@
   display: flex;
   margin: 0 auto;
   width: 550px;
+
 }
+
+
 
 .carousel-item img {
   width: 100%;
@@ -21,8 +24,9 @@
    left: 0;
    bottom: 0;
    color: white;
-   background: linear-gradient(to bottom, transparent 0%, black 98%);
+   background: rgba(0, 0, 0, 0.5);
    display: inline-block;
    width: 100%;
    padding: 0 1.2em;
+   padding-top: 1em;
  }

@@ -56,8 +56,11 @@ class Login extends Component {
     return (
       <div className="container login">
         <div className="shade-div"> <div className="middle">
+        <h1 className="main-title"> Welcome to Folkedex</h1>
           <div className="align-center">
-            <h2 className="login-title"><i className="fa fa-sign-in" aria-hidden="true"> Login</i></h2>
+            <div className="login-title">
+              <h2><i className="fa fa-sign-in" aria-hidden="true"></i> Login</h2>
+            </div>
               <form action="" className="loginForm">
                 <div className="form-group">
                   <label for="email"><i className="fa fa-envelope fa-lg" aria-hidden="true"></i></label>

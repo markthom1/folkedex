@@ -14,6 +14,7 @@ import Rank from './Components/Rank/Rank';
 import Play from './Components/Play/Play';
 import Header from './Components/Header';
 import Search from './Components/Search/Search';
+import Footer from './Components/Footer';
 
 
 class App extends Component {
@@ -66,19 +67,38 @@ class App extends Component {
       <Router>
         <div>
           {(!this.state.userLoggedIn)?
-            <Route path="/" render={(props) => {
-                  return (<Login {...props} isLoaded={this.toggleOnLogin}
-                      isLoggedIn={this.toggleUserLoggedIn}/>
-                  )
-                }
-              }
-            />
+            <div>
+              <Route path="/home" render={(props) => {
+                    return <Redirect to="/"/>
+                  }
+                }/>
+              <Route path="/profile/:id" render={(props, id) => {
+                    return <Redirect to="/"/>
+                  }
+                } />
+              <Route path="/rank" render={(props) => {
+                    return <Redirect to="/"/>
+                  }
+                } />
+              <Route path="/play" render={(props) => {
+                    return <Redirect to="/"/>
+                  }
+                } />
+              <Route path="/search" render={(props) => {
+                    return <Redirect to="/"/>
+                  }
+                }/>
+              <Route path="/" render={(props) => {
+                    return (<Login {...props} isLoaded={this.toggleOnLogin}
+                        isLoggedIn={this.toggleUserLoggedIn}/>
+                    )}}/>
+            </div>
 
           :
           <div>
-          <div className="row">
-            <Header />
-          </div>
+
+          <Header />
+
           <div className="row">
             <div className="col-2">
               {(localStorage.getItem('loginPage'))? "":navBar}
@@ -108,6 +128,8 @@ class App extends Component {
             <Route path="/search" component={Search}/>
           </div>
         </div>
+
+        <Footer />
         </div>
       }
 

@@ -1,7 +1,7 @@
 .col-2 {
-  height: 100%;
-  background: #5f4549; /*rgb(63,51,53);*/
+  background: #474B4F; /*rgb(63,51,53);*/
   padding-right: 0;
+  font-family: 'Cuprum', sans-serif;
 }
 
 /*.post-log {
@@ -11,8 +11,9 @@
 }*/
 
 .col-10 {
-  min-height: 100%;
+  min-height: 71.5vh;
   max-width: 82.15%;
+  font-family: 'Cuprum', sans-serif;
 }
 
 .col-10.main {
@@ -26,4 +27,8 @@
   width: 80%;
   box-sizing: border-box;
   border-radius: 10px;
+}
+
+.App {
+  background-color: #6B6E70;
 }

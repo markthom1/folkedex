@@ -1,0 +1,24 @@
+.search-result {
+  color: white;
+  font-family: 'Cuprum', sans-serif;
+  padding: 1.5em 1.8em;
+  background: rgba(255, 255, 255, 0.5);
+  margin-bottom: 2em;
+  display: flex;
+  flex-direction: row;
+  width: 55%;
+}
+
+.search-result img{
+  width: 100px;
+}
+
+.result-info {
+  padding-left: 1em;
+  position: relative;
+}
+
+.hold-btn {
+  position: absolute;
+  right: 50%;
+}

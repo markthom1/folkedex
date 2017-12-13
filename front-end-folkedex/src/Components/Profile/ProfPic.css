@@ -2,12 +2,13 @@
 
 
 .contains-prof-pic img {
-  border: 8px solid white;
-  box-shadow: 0 0 7px 2px rgba(91,70,73,0.5);
+  border: 8px solid rgba(34,38,41,1);
+  box-shadow: 0 0 7px 4px rgba(145,187,78,0.5);
   width: 250px;
   height: 250px;
   border-radius: 50%;
-
+  z-index: 2;
+  position: relative;
 }
 
 .contains-prof-pic {
@@ -16,14 +17,15 @@
 
 .users-name {
   position: absolute;
-  z-index: -1;
+  z-index: 0;
   top: 20%;
   color: white;
-  left: 215px;
+  left: 225px;
   padding-left: 30px;
   padding-right: 30px;
-  background: rgba(91,70,73,0.5);
-  border: 3px solid rgba(91,70,73,0.8);
+  background: rgba(34,38,41,1);
+  box-shadow: 0 0 7px 4px rgba(145,187,78,0.5);
+  /*border: 3px solid rgba(145,187,78,0.8);*/
   border-top-right-radius: 1em;
   border-bottom-right-radius: 1em;
 }

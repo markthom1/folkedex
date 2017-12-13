@@ -11,9 +11,12 @@ class Search extends Component {
       hasState: true,
       results: []
     }
+
+    this.searchUsers = this.searchUsers.bind(this)
   }
 
-  componentWillMount () {
+  searchUsers(e) {
+    e.preventDefault();
     console.log(search.searchTerm);
     var token = JSON.parse(localStorage.getItem('session')).token
     var options = {
@@ -24,7 +27,7 @@ class Search extends Component {
          'Authorization': `Bearer ${token}`
        }
       }
-    fetch('http://localhost:3000/users/?search=fred+bob+jack', options)
+    fetch('http://localhost:3000/users/', options)
     .then(response => response.json())
     .then(responseJson => {
       this.setState({
@@ -34,6 +37,10 @@ class Search extends Component {
     .catch(error => {
       console.log('Error!..: ',error);
     });
+  }
+
+  componentWillMount () {
+
   }
 
 
@@ -47,7 +54,11 @@ class Search extends Component {
 
 
     return (
-      <div className="results-container">
+      <div className="container esults-container">
+      <form className="search-form" onSubmit={(e)=> this.searchUsers(e)}>
+        <input id="search-bar" type="text" placeholder="Search ..."/>
+      <button className="btn-search" type="submit"><i className="fa fa-search" aria-hidden="true"></i></button>
+      </form>
         {allResult}
       </div>
     )
